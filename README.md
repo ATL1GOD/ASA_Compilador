@@ -1,2 +1,2 @@
 # ASA_Compilador
-Analizar Sintáctico Ascendente usando la gramática LL
+Analizar Sintáctico Ascendente usando la gramática LR
