@@ -1,4 +1,3 @@
-
 public class Token {
 
     final TipoToken tipo;
