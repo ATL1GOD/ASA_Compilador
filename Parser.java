@@ -1,4 +1,5 @@
-import java.util.*;
+import java.util.List;
+import java.util.Stack;
 
 public class Parser {
     private final List<Token> tokens;
@@ -14,15 +15,15 @@ public class Parser {
     private static final String[][] Acciones = {
             /***********
              * select | from | distinct | id | . | * | , | $ | Q | D | P | A | A1 | A2 | T |
-             * T1 | T2
+             * T1 | T2 16
              */
             /* Estado 0 */ { "s2", "", "", "", "", "", "", "", "1", "", "", "", "", "", "", "", "" },
             /* Estado 1 */ { "", "", "", "", "", "", "", "acc", "", "", "", "", "", "", "", "", "" },
             /* Estado 2 */ { "", "", "s3", "s8", "", "s5", "", "", "", "9", "4", "6", "7", "", "", "", "" },
-            /* Estado 3 */ { "", "", "", "s8", "", "s5", "", "", "", "", "16", "6", "7", "", "", "", "" },
+            /* Estado 3-- */ { "", "", "", "s8", "", "s5", "", "", "", "", "16", "6", "7", "", "", "", "" },
             /* Estado 4 */ { "", "r3", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" },
             /* Estado 5 */ { "", "r4", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" },
-            /* Estado 6 */ { "", "r5", "", "", "", "", "s17", "", "", "", "", "", "", "", "", "", "" },
+            /* Estado 6- */ { "", "r5", "", "", "", "", "s17", "", "", "", "", "", "", "", "", "", "" },
             /* Estado 7 */ { "", "r7", "", "", "", "", "r7", "", "", "", "", "", "", "", "", "", "" },
             /* Estado 8 */ { "", "r10", "", "", "s21", "", "r10", "", "", "", "", "", "", "20", "", "", "" },
             /* Estado 9 */ { "", "s10", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" },
@@ -40,10 +41,10 @@ public class Parser {
             /* Estado 21 */ { "", "", "", "s22", "", "", "r8", "", "", "", "", "", "", "", "", "", "" },
             /* Estado 22 */ { "", "r9", "", "", "", "", "r9", "", "", "", "", "", "", "", "", "", "" },
             /* Estado 23 */ { "", "", "", "", "", "", "r11", "r11", "", "", "", "", "", "", "", "", "" },
-            /* Estado 24 */ { "", "", "", "", "", "", "", "acc", "", "", "", "", "", "", "", "", "" },
     };
 
     public void parse() {
+        comparador=tokens.get(i);
         pila.push(0);
 
         if (comparador.equals(ultimo)) {
@@ -55,7 +56,7 @@ public class Parser {
                 comparador = tokens.get(i);
                 int estado = pila.peek();
                 int columna = columnaTerminal(comparador.tipo); // funcion
-                int estadoMovimiento = 0;
+                int estadoMovimiento ;
                 String movimiento = Acciones[estado][columna];
                 if (movimiento.startsWith("s")) { // s = desplazamiento
                     estadoMovimiento = Integer.parseInt(movimiento.substring(1));
