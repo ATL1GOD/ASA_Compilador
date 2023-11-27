@@ -97,6 +97,27 @@ public class Parser {
     }
 
     void reduccion(int estadoAnterior){
-
+        String accion;
+        int estadoActual,estadoSiguiente;
+        switch(estadoAnterior){
+            case 0: //Q -> select D from T
+                pila.pop();
+                pila.pop();
+                pila.pop();
+                pila.pop();
+                estadoActual=pila.peek();
+                accion=Acciones[estadoActual][8];
+                estadoSiguiente=Integer.parseInt(accion);
+                pila.push(estadoSiguiente);
+            break;
+            case 1: //D -> distinct P
+                pila.pop();
+                pila.pop();
+                estadoActual=pila.peek();
+                accion=Acciones[estadoActual][9];
+                estadoSiguiente=Integer.parseInt(accion);
+                pila.push(estadoSiguiente);
+            break;
+        }
     }
 }
