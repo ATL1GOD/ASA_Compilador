@@ -159,6 +159,62 @@ public class Parser {
                 pila.push(estadoSiguiente);
                 break;
 
+            case 8:// A2->.id
+                pila.pop();
+                pila.pop();
+                estadoActual = pila.peek();
+                accion = Acciones[estadoActual][13];
+                estadoSiguiente = Integer.parseInt(accion);
+                pila.push(estadoSiguiente);
+                break;
+            case 9: // A2-> E
+                estadoActual = pila.peek();
+                accion = Acciones[estadoActual][13];
+                estadoSiguiente = Integer.parseInt(accion);
+                pila.push(estadoSiguiente);
+                break;
+            case 10:// T->T,T1
+                pila.pop();
+                pila.pop();
+                pila.pop();
+                estadoActual = pila.peek();
+                accion = Acciones[estadoActual][14];
+                estadoSiguiente = Integer.parseInt(accion);
+                pila.push(estadoSiguiente);
+                break;
+            case 11: // T->T1
+                pila.pop();
+                estadoActual = pila.peek();
+                accion = Acciones[estadoActual][14];
+                estadoSiguiente = Integer.parseInt(accion);
+                pila.push(estadoSiguiente);
+                break;
+            case 12:// T1->idT2
+                pila.pop();
+                pila.pop();
+                estadoActual = pila.peek();
+                accion = Acciones[estadoActual][15];
+                estadoSiguiente = Integer.parseInt(accion);
+                pila.push(estadoSiguiente);
+                break;
+            case 13:// T2->id
+                pila.pop();
+                estadoActual = pila.peek();
+                accion = Acciones[estadoActual][16];
+                estadoSiguiente = Integer.parseInt(accion);
+                pila.push(estadoSiguiente);
+                break;
+            case 14:// T2->E
+                estadoActual = pila.peek();
+                accion = Acciones[estadoActual][16];
+                estadoSiguiente = Integer.parseInt(accion);
+                pila.push(estadoSiguiente);
+                break;
+            default:
+                System.out.println("Error en la reducción");
+                System.exit(0);
+                break;
+
         }
     }
 }
