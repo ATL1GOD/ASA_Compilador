@@ -118,6 +118,72 @@ public class Parser {
                 estadoSiguiente=Integer.parseInt(accion);
                 pila.push(estadoSiguiente);
             break;
+            case 2://D -> P
+                pila.pop();
+                estadoActual=pila.peek();
+                accion=Acciones[estadoActual][9];
+                estadoSiguiente=Integer.parseInt(accion);
+                pila.push(estadoSiguiente);
+            break;
+            case 3://P->*
+            case 4://P->A
+                pila.pop();
+                estadoActual=pila.peek();
+                accion=Acciones[estadoActual][10];
+                estadoSiguiente=Integer.parseInt(accion);
+                pila.push(estadoSiguiente);
+            break;
+            case 5: //A->A1A2
+                pila.pop();
+                pila.pop();
+                estadoActual=pila.peek();
+                accion=Acciones[estadoActual][11];
+                estadoSiguiente=Integer.parseInt(accion);
+                pila.push(estadoSiguiente);
+            break;
+            case 6://A1-> ,A
+                pila.pop();
+                pila.pop();
+                estadoActual=pila.peek();
+                accion=Acciones[estadoActual][12];
+                estadoSiguiente=Integer.parseInt(accion);
+                pila.push(estadoSiguiente);
+            break;
+            case 7://A1->E
+                estadoActual=pila.peek();
+                accion=Acciones[estadoActual][12];
+                estadoSiguiente=Integer.parseInt(accion);
+                pila.push(estadoSiguiente);
+            break;
+            case 8://A2->idA3
+                pila.pop();
+                pila.pop();
+                estadoActual=pila.peek();
+                accion=Acciones[estadoActual][13];
+                estadoSiguiente=Integer.parseInt(accion);
+                pila.push(estadoSiguiente);
+            break;
+            case 9://A3->.id
+                pila.pop();
+                pila.pop();
+                estadoActual=pila.peek();
+                accion=Acciones[estadoActual][14];
+                estadoSiguiente=Integer.parseInt(accion);
+                pila.push(estadoSiguiente);
+            break;
+            case 10://A3->E
+                estadoActual=pila.peek();
+                accion=Acciones[estadoActual][14];
+                estadoSiguiente=Integer.parseInt(accion);
+                pila.push(estadoSiguiente);
+            break;
+            case 11://T->T2T1
+                pila.pop();
+                pila.pop();
+                estadoActual=pila.peek();
+                accion=Acciones[estadoActual][15];
+                estadoSiguiente=Integer.parseInt(accion);
+            break;
         }
     }
 }
