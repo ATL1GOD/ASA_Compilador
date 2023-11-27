@@ -105,25 +105,20 @@ public class ASA_LL {
                 pila.pop();
                 pila.pop();
                 pila.pop();
-                edoActual = pila.peek(); // obtenemos el elemento que esta en la punta de la pila para saber en qué
-                                         // estado andamos
+                edoActual = pila.peek(); // obtenemos el elemento que esta en la punta de la pila para saber en que estado andamos
                 action = Acciones[edoActual][8]; // sacamos la siguiente acción
                 edoSig = Integer.parseInt(action); // convertimos en enetero el string de la matriz
                 pila.push(edoSig); // ponemos en la pila el nuevo estado
                 break;
             case 1: // D -> distinct P
-                // se quitan 2 elementos de la pila
                 pila.pop();
                 pila.pop();
                 edoActual = pila.peek();
-                // obtenemos el elemento que esta en la punta de la pila para saber en qué
-                // estado andamos
                 action = Acciones[edoActual][9];
-                edoSig = Integer.parseInt(action); // convertimos el entero en un string de la matriz
-                pila.push(edoSig); // ponemos en la pila el nuevo estado
+                edoSig = Integer.parseInt(action);
+                pila.push(edoSig);
                 break;
             case 2: // D -> P
-                // se quita 1 elemento de la pila
                 pila.pop();
                 edoActual = pila.peek();
                 action = Acciones[edoActual][9];
@@ -131,8 +126,7 @@ public class ASA_LL {
                 pila.push(edoSig);
                 break;
             case 3:// P -> *
-            case 4:// P -> * | A, el caso 3 es igual que el caso 4
-                   // se quita 1 elemento de la pila
+            case 4:// P -> A, el caso 3 es igual que el caso 4
                 pila.pop();
                 edoActual = pila.peek();
                 action = Acciones[edoActual][10];
@@ -140,7 +134,6 @@ public class ASA_LL {
                 pila.push(edoSig);
                 break;
             case 5: // A -> A1A2
-                // se quitan 2 elementos de la pila
                 pila.pop();
                 pila.pop();
                 edoActual = pila.peek();
@@ -149,7 +142,6 @@ public class ASA_LL {
                 pila.push(edoSig);
                 break;
             case 6: // A1 -> ,A
-                // se quitan 2 elementos de la pila
                 pila.pop();
                 pila.pop();
                 edoActual = pila.peek();
