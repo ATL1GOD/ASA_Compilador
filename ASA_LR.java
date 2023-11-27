@@ -1,14 +1,13 @@
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
-public class Parser {
+public class ASA_LR {
     private final List<Token> tokens;
     private int i = 0;
     private Token comparador;
     private final Token ultimo = new Token(TipoToken.EOF, "");
     Stack<Integer> pila = new Stack<>();
 
-    public Parser(List<Token> tokens) {
+    public ASA_LR(List<Token> tokens) {
         this.tokens = tokens; // constructor de la lista de tokens
     }
 
