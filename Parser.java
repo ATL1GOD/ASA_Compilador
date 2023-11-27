@@ -86,9 +86,9 @@ public class Parser {
             return 2;
         else if (t.equals("IDENTIFICADOR"))
             return 3;
-        else if (t.equals("PUNTO"))
-            return 4;
         else if (t.equals("ASTERISCO"))
+            return 4;
+        else if (t.equals("PUNTO"))
             return 5;
         else if (t.equals("COMA"))
             return 6;
